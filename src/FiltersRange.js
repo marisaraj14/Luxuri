@@ -9,32 +9,34 @@ export default function FiltersRange(props) {
         //Filter and Search to be same
         let filteredProducts = props.products.filter(function (product) {
             //matches made with products will be displayed if it return true, then display that
+            var gender = null;
+            var brand = null;
+            var category = null;
+            var year = null;
+
             for (let i = 0; i < parameters.length; ++i) {
                 console.log()
                 switch (parameters[i].type) {
                     case "Gender":
-                        if (parameters[i].val === product.gender)
-                            return true;
-                        else if (parameters[i].val === "All")
-                            return true;
-                        else
-                            return false;
+                        if (parameters[i].val !== "All" && parameters[i].val !== product.gender)
+                            gender = gender == null ? false : false || gender;
+                        else 
+                            gender = gender == null ? true : gender  || true;
+                        break;
                     case "Brand":
-                        if (parameters[i].val === product.brand)
-                            return true;
-                        else if (parameters[i].val === "All")
-                            return true;
-                        else
-                            return false;
+                        if (parameters[i].val !== "All" && parameters[i].val !== product.brand)
+                        brand = brand == null ? false : false || brand;
+                        else 
+                        brand = brand == null ? true : brand  || true;
+                        break;
                     case "Category":
-                        if (parameters[i].val === product.category)
-                            return true;
-                        else if (parameters[i].val === "All")
-                            return true;
-                        else
-                            return false;
+                        if (parameters[i].val !== "All" && parameters[i].val !== product.category)
+                        category = category == null ? false : false || category;
+                        else 
+                        category = category == null ? true : category  || true;
+                        break;
                     case "Price":
-                        if (product.price >= 59 && product.price < 21820)
+                        if (parameters[i].val >= 59 && product.price < 21820)
                             return true;
                         if
                             (parseInt(product.price) > 21820 && parseInt(product.price) < 43581)
@@ -49,19 +51,20 @@ export default function FiltersRange(props) {
                         else
                             return false;
                     case "Year":
-                        if (parameters[i].val == product.year)
-                            return true;
-                        else if (parameters[i].val === "All")
-                            return props.products;
-                        else
-                            return false;
+                        if (parameters[i].val !== "All" && parameters[i].val !== product.year)
+                        year = year == null ? false : false || year;
+                        else 
+                        year = year == null ? true : year  || true;
+                        break;
                     case "Rating":
                         if (Math.floor(product.year) === "3" || Math.floor(product.year) === "4" || Math.floor(product.year) === "All")
                             return true;
                         else
                             return false;
                 }
+                
             }
+            return gender== null? true: gender || brand== null? true: brand || category== null? true: category || year== null? true: year ;
         })
         props.setDisplay(filteredProducts)
     }, [parameters])
