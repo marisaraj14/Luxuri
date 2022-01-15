@@ -64,7 +64,7 @@ export default function FiltersRange(props) {
                 }
                 
             }
-            return gender== null? true: gender || brand== null? true: brand || category== null? true: category || year== null? true: year ;
+            return gender== null? true: gender ;
         })
         props.setDisplay(filteredProducts)
     }, [parameters])
