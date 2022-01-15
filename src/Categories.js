@@ -3,19 +3,13 @@ export default function Categories(props) {
 
     const [parameters, setParameters] = useState([]);
 
-    const range2 = [...new Set(props.products.map(i => i.year))];
-    const rangeList2 = range2.map((i, index) =>
-        <li key={index.toString()} className="text-white">
-            <input type="checkbox" name="year" value={i} className="p-2 m-2 accent-yellow-500" onClick={() => handleChange("year", i)} />{i}
-        </li>
-    );
-    const range = [...new Set(props.products.map(i => i.gender))];
-    range.unshift("All");
-    const rangeList = range.map((i, index) =>
-        <li key={index.toString()} className="text-white">
-            <input type="checkbox" name="year" value={i} className="p-2 m-2 accent-yellow-500" onClick={() => handleChange("year", i)} />{i}
-        </li>
-    );
+    // const range = [...new Set(props.products.map(i => i.gender))];
+    // range.unshift("All");
+    // const rangeList = range.map((i, index) =>
+    //     <li key={index.toString()} className="text-white">
+    //         <input type="checkbox" name="year" value={i} className="p-2 m-2 accent-yellow-500" onClick={() => handleChange("year", i)} />{i}
+    //     </li>
+    // );
 
     useEffect(() => {
         //filter and search criteria shoud be same
@@ -96,34 +90,10 @@ export default function Categories(props) {
             */}
             <section>
                 <ul className="h-auto flex flex-col overflow-y-auto overscroll-contain">
-                    {rangeList}
                 </ul>
             </section>
             <hr className="border-1 border-dotted border-gray-400 w-5/6 inline-block align-center" />
-            <section>
-                <p className="text-mono text-2xl  text-gray-300">Year.</p>
-                <ul className="h-52 flex flex-col overflow-y-auto overscroll-contain">
-                    {rangeList2}
-                </ul>
-            </section> 
-             <section>
-                <p className="text-mono text-2xl  text-gray-300">Year.</p>
-                <ul className="h-52 flex flex-col overflow-y-auto overscroll-contain">
-                    {rangeList2}
-                </ul>
-            </section>  
-            <section>
-                <p className="text-mono text-2xl  text-gray-300">Year.</p>
-                <ul className="h-52 flex flex-col overflow-y-auto overscroll-contain">
-                    {rangeList2}
-                </ul>
-            </section>
-            <section>
-                <p className="text-mono text-2xl  text-gray-300">Year.</p>
-                <ul className="h-52 flex flex-col overflow-y-auto overscroll-contain">
-                    {rangeList2}
-                </ul>
-            </section>
+           
 
         </article>
     );

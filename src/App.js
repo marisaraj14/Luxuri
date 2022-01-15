@@ -1,13 +1,13 @@
 import './App.css';
 import Main from './Main';
 import ProductList from './ProductList';
-import Categories from './Categories';
 import { useState, useEffect } from "react";
+import FiltersRange from './FiltersRange';
 
 function App() {
 
   const [products, setProducts] = useState([]);
-  const [filters, setFilters] = useState([]);
+  const [filters, setFilters] = useState("");
   const [display, setDisplay] =useState([]);
   const url = "https://demo7303877.mockable.io/";
 
@@ -35,7 +35,7 @@ function App() {
       </section>
       <div className='grid grid-flow-row-dense grid-flow-col grid-cols-4'>
         <section>
-          <Categories filters={filters} setDisplay={setDisplay} products={products}/>
+          <FiltersRange filters={filters} setDisplay={setDisplay} products={products}/>
         </section>
         <section className='col-span-3 ml-16'>
           <ProductList list={display} />

@@ -3,7 +3,7 @@ import { useRef } from "react";
 export default function Main(props) {
     const searchWord = useRef();
     const searchResult = (val) => {
-        if (val != "") {
+        if (val !== "") {
             let result = props.products.filter(item => item.productName.toLowerCase().indexOf(val.toLowerCase())>-1)
             props.setDisplay(result);
         }
