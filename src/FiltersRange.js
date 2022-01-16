@@ -13,6 +13,7 @@ export default function FiltersRange(props) {
             var brand = null;
             var category = null;
             var year = null;
+            var rating = null;
 
             for (let i = 0; i < parameters.length; ++i) {
                 console.log()
@@ -20,51 +21,52 @@ export default function FiltersRange(props) {
                     case "Gender":
                         if (parameters[i].val !== "All" && parameters[i].val !== product.gender)
                             gender = gender == null ? false : false || gender;
-                        else 
-                            gender = gender == null ? true : gender  || true;
+                        else
+                            gender = gender == null ? true : gender || true;
                         break;
                     case "Brand":
                         if (parameters[i].val !== "All" && parameters[i].val !== product.brand)
-                        brand = brand == null ? false : false || brand;
-                        else 
-                        brand = brand == null ? true : brand  || true;
+                            brand = brand == null ? false : false || brand;
+                        else
+                            brand = brand == null ? true : brand || true;
                         break;
                     case "Category":
                         if (parameters[i].val !== "All" && parameters[i].val !== product.category)
-                        category = category == null ? false : false || category;
-                        else 
-                        category = category == null ? true : category  || true;
+                            category = category == null ? false : false || category;
+                        else
+                            category = category == null ? true : category || true;
                         break;
                     case "Price":
-                        if (parameters[i].val >= 59 && product.price < 21820)
-                            return true;
-                        if
-                            (parseInt(product.price) > 21820 && parseInt(product.price) < 43581)
-                            return true;
-                        if
-                            (parseInt(product.price) > 43581 && parseInt(product.price) < 65342)
-                            return true;
-                        if (parseInt(product.price) > 65342 && parseInt(product.price) < 87103.0)
-                            return true;
-                        else if (product.price === "All")
-                            return true;
-                        else
+                        // if (parameters[i].val >= 59 && product.price < 21820)
+                        //     return true;
+                        // if
+                        //     (parseInt(product.price) > 21820 && parseInt(product.price) < 43581)
+                        //     return true;
+                        // if
+                        //     (parseInt(product.price) > 43581 && parseInt(product.price) < 65342)
+                        //     return true;
+                        // if (parseInt(product.price) > 65342 && parseInt(product.price) < 87103.0)
+                        //     return true;
+                        if (product.price !== "All")
                             return false;
+                        
+                        else
+                            return true;
                     case "Year":
                         if (parameters[i].val !== "All" && parameters[i].val !== product.year)
-                        year = year == null ? false : false || year;
-                        else 
-                        year = year == null ? true : year  || true;
+                            year = year == null ? false : false || year;
+                        else
+                            year = year == null ? true : year || true;
                         break;
                     case "Rating":
-                        if (Math.floor(product.year) === "3" || Math.floor(product.year) === "4" || Math.floor(product.year) === "All")
-                            return true;
-                        else
+                        if (Math.floor(product.year) !== "3" || Math.floor(product.year) !== "4" || Math.floor(product.year) !== "All")
                             return false;
+                        else
+                            return true;
                 }
-                
+
             }
-            return gender== null? true: gender ;
+            return gender == null ? true : gender && category == null ? true : category && brand == null ? true : brand && year == null ? true : year ;
         })
         props.setDisplay(filteredProducts)
     }, [parameters])
