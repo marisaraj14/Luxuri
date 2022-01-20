@@ -7,7 +7,7 @@ export default function Main(props) {
             let result = props.products.filter(item => item.productName.toLowerCase().indexOf(val.toLowerCase())>-1)
             props.setDisplay(result);
         }
-        else if(val === ""){
+        else if(val === ""){    
             props.setDisplay(props.products);
             searchWord.current.value="";
         }
